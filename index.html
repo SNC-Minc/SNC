@@ -658,6 +658,17 @@
                         color: '#fff',
                         anchor: 'end',
                         align: 'top'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            afterLabel: function(context) {
+                                const index = context.dataIndex;
+                                const value1 = context.chart.data.datasets[0].data[index];
+                                const value2 = context.chart.data.datasets[1].data[index];
+                                const total = value1 + value2;
+                                return 'Total: ' + total;
+                            }
+                        }
                     }
                 },
                 scales: {
