@@ -358,6 +358,18 @@
                 </div>
             </div>
 
+            <div class="charts-section">
+                <h2 class="section-title">Adesão ao SNC por Região</h2>
+                <div class="charts-grid">
+                    <div class="chart-container">
+                        <div class="chart-title">Municípios por Região - Com e Sem Adesão ao SNC</div>
+                        <div class="chart-wrapper">
+                            <canvas id="chartRegioes"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="insights-section">
                 <h2 class="section-title">Análise de Insights</h2>
                 <div class="insights-grid">
@@ -612,6 +624,45 @@
                 scales: {
                     y: { beginAtZero: true, stacked: false, ticks: { font: { size: 11 } } },
                     x: { ticks: { font: { size: 11 } } }
+                }
+            }
+        });
+
+        // Chart: Adesão ao SNC por Região
+        new Chart(document.getElementById('chartRegioes'), {
+            type: 'bar',
+            data: {
+                labels: ['Norte', 'Nordeste', 'Centro-Oeste', 'Sudeste', 'Sul'],
+                datasets: [
+                    {
+                        label: 'Com Adesão ao SNC',
+                        data: [169, 920, 196, 743, 717],
+                        backgroundColor: '#43e97b',
+                        borderRadius: 5
+                    },
+                    {
+                        label: 'Sem Adesão ao SNC',
+                        data: [96, 358, 98, 304, 253],
+                        backgroundColor: '#e74c3c',
+                        borderRadius: 5
+                    }
+                ]
+            },
+            options: {
+                ...chartOptions,
+                plugins: {
+                    ...chartOptions.plugins,
+                    legend: { position: 'bottom', labels: { font: { size: 12 }, padding: 15 } },
+                    datalabels: {
+                        font: { weight: 'bold', size: 12 },
+                        color: '#fff',
+                        anchor: 'end',
+                        align: 'top'
+                    }
+                },
+                scales: {
+                    y: { beginAtZero: true, ticks: { font: { size: 12 } } },
+                    x: { ticks: { font: { size: 12 } } }
                 }
             }
         });
